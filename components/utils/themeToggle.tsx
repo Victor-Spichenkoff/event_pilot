@@ -1,9 +1,8 @@
 "use client"
 
 import { useTheme } from "next-themes"
-import { Sun, Moon, LucideProps } from "lucide-react"
-import { Button } from "../ui/button"
-import { ForwardRefExoticComponent, RefAttributes, useEffect, useState } from "react"
+import { Sun, Moon } from "lucide-react"
+import {useCallback, useEffect, useState} from "react"
 
 interface IThemeToggle {
     useLabel?: boolean
@@ -15,7 +14,7 @@ export const ThemeToggle = ({useLabel, useFullSize}: IThemeToggle) => {
     const { theme, setTheme } = useTheme()
     const [canLoad, setCanLoad] = useState(false)
 
-    useEffect(()=>{
+    useCallback(()=>{
         setCanLoad(true)
     }, [theme])
 

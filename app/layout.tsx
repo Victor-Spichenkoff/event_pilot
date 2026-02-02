@@ -1,7 +1,20 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import {Geist, Geist_Mono, Playfair_Display, DM_Sans} from "next/font/google";
 import "./globals.css";
 import {Providers} from "@/components/utils/providers/providers";
+
+
+// For titles
+const playdairDisplay = Playfair_Display({
+    variable:"--font-playfair",
+    subsets: ['latin']
+})
+
+// For Body
+const dmSans =  DM_Sans({
+    variable:"--font-dm-sans",
+    subsets: ['latin']
+})
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,7 +39,12 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+            className={`
+            ${geistSans.variable} 
+            ${geistMono.variable} 
+            ${playdairDisplay.variable} 
+            ${dmSans.variable} 
+            antialiased bg-background`}
         >
         <Providers>
             {children}

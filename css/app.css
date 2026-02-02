@@ -1,0 +1,5 @@
+.btn-with-icon {
+    @apply rounded-md px-2 py-1.5 cursor-pointer
+    hover:bg-accent hover:text-accent-foreground
+    ;
+}

@@ -44,7 +44,7 @@ export default function RootLayout({
             ${geistMono.variable} 
             ${playdairDisplay.variable} 
             ${dmSans.variable} 
-            antialiased bg-background`}
+            antialiased bg-background font-dm-sans`}
         >
         <Providers>
             {children}

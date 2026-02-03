@@ -31,7 +31,7 @@ export const Header = ({
                     )}
 
                 {/* Título central */}
-                <div className="mx-auto text-3xl font-bold text-foreground">
+                <div className="mx-auto text-3xl font-bold text-foreground font-playfair">
                     {title}
                 </div>
 

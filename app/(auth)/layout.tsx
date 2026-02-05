@@ -12,16 +12,16 @@ export default function AppLayout({ children }: { children: ReactNode }) {
 
 
     return (
-        <>
+        <div className={"flex flex-col h-screen"}>
             <Header
                 title={title}
                 hideMenu
                 hideProfile
             />
 
-            <main>{children}</main>
+            <main className={"flex-1"}>{children}</main>
 
             <Footer />
-        </>
+        </div>
     )
 }

@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
+import {checkRequiredEnvVariables} from "@/lib/env";
+
+checkRequiredEnvVariables()
+
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;

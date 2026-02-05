@@ -1,4 +1,5 @@
 import {ConnectionTest} from "@/components/utils/connectionTest";
+import {LoginForm} from "@/app/(auth)/loginForm";
 
 export const metadata = {
     title: 'Login'
@@ -6,9 +7,9 @@ export const metadata = {
 
 export default function LoginPage() {
     return (
-        <div>
+        <div className={"h-full w-full flex justify-center items-center bg-red-500"}>
             <ConnectionTest/>
-            Login
+            <LoginForm />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import axios, {AxiosRequestConfig, AxiosResponse, isAxiosError} from "axios";
 import {toast} from "sonner";
 
 const baseUrl = process.env.API_URL
-
+console.log(baseUrl)
 
 export const handleApiCallWithCallBack = async <TReturn>
 (apiCall: () => Promise<AxiosResponse<TReturn>>): Promise<GenericApiResponse<TReturn>> => {

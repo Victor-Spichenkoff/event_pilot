@@ -17,6 +17,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
                 title={title}
                 hideMenu
                 hideProfile
+                showLogo
             />
 
             <main className={"flex-1"}>{children}</main>

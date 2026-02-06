@@ -6,9 +6,6 @@ export const useIsLogged = () => {
 
     useEffect( () => {
         (async ()=>{
-            // IF want to use to refresh token:
-            // const expiresAt: any = await getAccessToken()
-            // if(new Date(expiresAt?.value) > new Date())
             const accessToken = await getAccessToken()
             if(accessToken)
                 return setIsLogged(true)

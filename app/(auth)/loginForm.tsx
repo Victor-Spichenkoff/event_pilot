@@ -45,8 +45,8 @@ export const LoginForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7 w-full">
                     <FormInput form={form}
                                name={"email"}
-                        // label="Name"
-                               placeholder="username"
+                            // label="Name"
+                               placeholder="email"
                                onEnter={form.handleSubmit(onSubmit)}
                     />
 

@@ -43,15 +43,26 @@ export const FormInput =
                                     placeholder={placeholder}
                                     {...field}
                                     className={`
-                                        w-full min-w-[300px] px-4 py-5 md:py-3 text-2xl text-white
-                                        bg-white/10 backdrop-blur-md rounded-2xl
-                                        border border-white/20
+                                        w-full min-w-75 px-4 py-5 md:py-3 text-2xl dark:text-white
+                                        bg-gray-600/10 dark:bg-white/10 backdrop-blur-md rounded-2xl
+                                        border border-gray-900/20 dark:border-white/20 
                                         placeholder:text-secondary-foreground dark:placeholder:text-white/60
                                         shadow-lg shadow-black/30
-                                        focus:ring-1 focus:ring-primary outline-none
+                                        focus-visible:ring-1 focus-visible:ring-offset-0
+                                        focus:ring-1 focus-visible:ring-primary outline-none
                                         transition-all
                                         ${useDarkMode && "text-text border-text/20 placeholder:text-text/60"}
                                         `}
+                                    // className={`
+                                    //     w-full min-w-[300px] px-4 py-5 md:py-3 text-2xl text-white
+                                    //     bg-white/10 backdrop-blur-md rounded-2xl
+                                    //     border border-white/20
+                                    //     placeholder:text-secondary-foreground dark:placeholder:text-white/60
+                                    //     shadow-lg shadow-black/30
+                                    //     focus:ring-1 focus:ring-primary outline-none
+                                    //     transition-all
+                                    //     ${useDarkMode && "text-text border-text/20 placeholder:text-text/60"}
+                                    //     `}
                                 />
 
                             </FormControl>

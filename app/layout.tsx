@@ -39,12 +39,13 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body
+            suppressHydrationWarning
             className={`
             ${geistSans.variable} 
             ${geistMono.variable} 
             ${playdairDisplay.variable} 
             ${dmSans.variable} 
-            antialiased bg-background`}
+            antialiased bg-background font-dm-sans`}
         >
         <Providers>
             {children}

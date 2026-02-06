@@ -1,8 +1,8 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { Sun, Moon } from "lucide-react"
-import {useCallback, useEffect, useState} from "react"
+import {useTheme} from "next-themes"
+import {Sun, Moon} from "lucide-react"
+import {useCallback, useEffect, useState} from "react";
 
 interface IThemeToggle {
     useLabel?: boolean
@@ -11,12 +11,14 @@ interface IThemeToggle {
 
 
 export const ThemeToggle = ({useLabel, useFullSize}: IThemeToggle) => {
-    const { theme, setTheme } = useTheme()
+    const {theme, setTheme} = useTheme()
     const [canLoad, setCanLoad] = useState(false)
 
-    useCallback(()=>{
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setCanLoad(true)
     }, [theme])
+
 
     return (
         <button
@@ -30,11 +32,11 @@ export const ThemeToggle = ({useLabel, useFullSize}: IThemeToggle) => {
         >
             { canLoad && (
                 <div className="flex items-center gap-x-3">
-                    {theme == "dark" ? <Sun /> : <Moon />}
+                    {theme == "dark" ? <Sun/> : <Moon  />}
                     {useLabel && "Theme"}
                 </div>
             ) }
-            { !canLoad && <Moon/> }
+            { !canLoad && <Sun/> }
         </button>
     )
 }

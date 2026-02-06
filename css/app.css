@@ -1,5 +1,27 @@
 .btn-with-icon {
     @apply rounded-md px-2 py-1.5 cursor-pointer
-    hover:bg-accent hover:text-accent-foreground
-    ;
+    hover:bg-accent hover:text-accent-foreground;
+}
+
+
+
+.link {
+    color: var(--primary);
+    position: relative;
+}
+
+.link::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 1.7px;
+    background-color: var(--primary);
+    top: 100%;
+    left: 0;
+    width: 0;
+    transition: width .5s;
+}
+
+.link:hover::before {
+    width: 100%;
 }

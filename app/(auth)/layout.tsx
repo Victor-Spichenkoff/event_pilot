@@ -21,7 +21,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
 
             <main className={"flex-1"}>{children}</main>
 
-            <Footer />
+            <Footer notAbsolute/>
         </div>
     )
 }

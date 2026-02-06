@@ -46,9 +46,9 @@ export const FormInput =
                                         w-full min-w-[300px] px-4 py-5 md:py-3 text-2xl text-white
                                         bg-white/10 backdrop-blur-md rounded-2xl
                                         border border-white/20
-                                        placeholder:text-white/60
+                                        placeholder:text-secondary-foreground dark:placeholder:text-white/60
                                         shadow-lg shadow-black/30
-                                        focus:ring-2 focus:ring-highlight outline-none
+                                        focus:ring-1 focus:ring-primary outline-none
                                         transition-all
                                         ${useDarkMode && "text-text border-text/20 placeholder:text-text/60"}
                                         `}

@@ -40,7 +40,7 @@ export const LoginForm = () => {
     }
 
     return (
-        <Card className={"px-8 py-4"}>
+
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7 w-full">
                     <FormInput form={form}
@@ -66,6 +66,7 @@ export const LoginForm = () => {
                     </div>
                 </form>
             </Form>
-        </Card>
+
+
     )
 }

@@ -11,32 +11,44 @@ import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {FormInput} from "@/components/utils/input";
 import {Button} from "@/components/ui/button";
+import {authService} from "@/services/authService";
+import {saveAccessToken} from "@/storage/cookies/auth";
+import {Env} from "@/lib/env";
+import {useLoginRedirect} from "@/app/(auth)/shared/useLoginRedirect";
 
 export const LoginForm = () => {
     const [isLoading, startTransition] = useTransition()
     const router = useRouter()
     const searchParams = useSearchParams()
+    const { redirectWhenAlreadyLogged, redirectAfterLogin,checkForAuthErrorAndShowMessage } = useLoginRedirect()
 
     useEffect(() => {
-        const isLoginError = searchParams.get('loginError')
-        if(isLoginError) {
-            toast.error("You need to login to access it!")
-        }
+        redirectWhenAlreadyLogged().then()
+        checkForAuthErrorAndShowMessage()
     }, [])
 
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
-            email: "",
-            password: ""
+            email: Env.isDev ? "user@mail.com" : "",
+            password: Env.isDev ? "123456" : "",
         },
     })
 
 
-    //TODO:
     const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
-        console.log(data)
-        toast.info("Pós")
+        startTransition(async () =>{
+            const result = await authService.login(data.email, data.password)
+            if(result.isError) {
+                toast.error(result.errorMessage)
+                return
+            }
+
+            await saveAccessToken(result.response.token, result.response.expiresAt)
+
+            redirectAfterLogin()
+            toast.success("Login successfully")
+        })
     }
 
     return (

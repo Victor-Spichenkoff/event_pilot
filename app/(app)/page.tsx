@@ -2,11 +2,13 @@ import {ThemeToggle} from "@/components/utils/themeToggle";
 import {ThemePlayground} from "@/components/template/themePlayground";
 import Link from "next/link";
 import {Header} from "@/components/template/header";
+import {LogoutButton} from "@/components/utils/logoutButton";
 
 export default function Home() {
     return (
         <div className="flex flex-col min-h-screen items-center justify-center">
             <ThemeToggle/>
+            <LogoutButton />
             <div>
                 <Link href={"/checkIn/online"}>Check in online</Link>
                 {/*<Link href={""}>Check in online</Link>*/}

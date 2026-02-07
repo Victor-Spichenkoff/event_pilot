@@ -2,33 +2,20 @@
 
 import {cookies} from "next/headers";
 
-export const saveAccessToken = async (accessToken: string, expiresAt: Date) => {
+export const saveAccessToken = async (accessToken: string, expiresAt: string | Date) => {
+    const expires = expiresAt instanceof Date ? expiresAt : new Date(expiresAt)
+
     const cookieStore = await cookies()
     cookieStore.set('access_token', accessToken, {
         httpOnly: true,
         secure: true,
         sameSite: 'lax',
-        expires: expiresAt,
+        expires: expires,
         path: '/',
     })
 }
 
 
-export const saveExpiresAt = async (expiresAt: Date) => {
-    const cookieStore = await cookies()
-    cookieStore.set('2748', expiresAt.toString(), {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'lax',
-        expires: expiresAt,
-        path: '/',
-    })
-}
-
-export const getExpiresAt = async () => {
-    const cookieStore = await cookies()
-    return cookieStore.get('expires_at')
-}
 
 
 export const getAccessToken = async () => {

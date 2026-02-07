@@ -2,13 +2,13 @@ export const Env = {
     isDev: process.env.NODE_ENV=="development",
     isProd: process.env.NODE_ENV=="production",
     isDevOrTest: process.env.NODE_ENV=="development" || process.env.NODE_ENV=="test",
-    apiUrl: process.env.API_URL
+    apiUrl: process.env.NEXT_PUBLIC_API_URL
 }
 
 
 const variablesNames = [
     "NODE_ENV",
-    "API_URL",
+    "NEXT_PUBLIC_API_URL",
 ]
 
 

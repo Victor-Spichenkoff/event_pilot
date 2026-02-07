@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev-back": "cd ../backend/src/EventPilot.API/ && dotnet run --launch-profile \"https\"",
+    "server": "cd ../backend/src/EventPilot.API/ && dotnet run --launch-profile \"https\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

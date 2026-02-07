@@ -5,6 +5,7 @@ import Link from "next/link";
 import {Suspense} from "react";
 import Image from "next/image";
 import BigLogo from "@/public/logo/eventPilot_sun.png";
+import {Loading} from "@/components/template/loading";
 
 export const metadata: Metadata = {
     title: 'EventPilot - Login'

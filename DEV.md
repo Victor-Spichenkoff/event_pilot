@@ -1,6 +1,5 @@
 # Lembrar de criar o env manager (Env.IsDevelopment())
-# Como criar um layout mais aproveitável
-
+# Create auth -> login functions
 
 
 # TODO

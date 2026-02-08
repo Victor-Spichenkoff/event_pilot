@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev-back": "cd ../backend/src/EventPilot.API/ && dotnet run --launch-profile \"https\"",
+    "server": "cd ../backend/src/EventPilot.API/ && dotnet run --launch-profile \"https\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.2",
+    "@mui/material": "^7.3.7",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-radio-group": "^1.3.8",

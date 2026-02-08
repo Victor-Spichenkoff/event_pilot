@@ -1,8 +1,9 @@
 import axios, {AxiosRequestConfig, AxiosResponse, isAxiosError} from "axios";
 import {toast} from "sonner";
+import {getFirstErrorMessage} from "@/utils/formatters/getFirstErrorMessage";
+import {Env} from "@/lib/env";
 
-const baseUrl = process.env.API_URL
-console.log(baseUrl)
+const baseUrl = Env.apiUrl
 
 export const handleApiCallWithCallBack = async <TReturn>
 (apiCall: () => Promise<AxiosResponse<TReturn>>): Promise<GenericApiResponse<TReturn>> => {
@@ -17,7 +18,6 @@ export const handleApiCallWithCallBack = async <TReturn>
     } catch (e: any) {
         console.log(e.status)
         if (isAxiosError(e) && (e.status == 401)) {
-            //TODO: IS STILL WORKING without this?; if error, comment line 20:
             if (isAxiosError(e) && (e.status == 401 || e.code == "UNAUTHORIZED"))
                 return {
                     isError: true,
@@ -26,10 +26,11 @@ export const handleApiCallWithCallBack = async <TReturn>
         }
 
         // tratar o erro conforme o backend
-        if (isAxiosError(e) && typeof e.response?.data.message == "string")
+        if (isAxiosError(e) && typeof e.response?.data.title == "string")
             return {
                 isError: true,
-                errorMessage: `${e.response?.data.message}`
+                // errorMessage: `${e.response?.data.message}`
+                errorMessage: `${getFirstErrorMessage(e.response?.data)}`
             }
 
 
@@ -73,6 +74,8 @@ export const handleApiCall = async <TReturn, TBody = any>
 
     //simula uma request usando essas infos
     const query = async () => {
+        console.log("BASE URL")
+        console.log(baseUrl)
         if (method == "get" || (method == "delete" && !body)) {// he doesn't use body
             if (fullUrl)
                 return await axios[method](fullUrl, config)

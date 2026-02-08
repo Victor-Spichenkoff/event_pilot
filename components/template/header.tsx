@@ -1,6 +1,3 @@
-import Link from "next/link";
-import {Button} from "@/components/ui/button";
-
 import Logo from "@/public/logo/logo_rounded.png"
 import {Menu, User} from "lucide-react";
 import Image from "next/image";
@@ -40,12 +37,10 @@ export const Header = ({
                     </div>
                 )}
 
-                {/* Título central */}
                 <div className="mx-auto text-3xl font-bold text-foreground font-playfair">
                     {title}
                 </div>
 
-                {/* Botão perfil */}
                 {!hideProfile && (
                     <div className="absolute right-4">
                         <button

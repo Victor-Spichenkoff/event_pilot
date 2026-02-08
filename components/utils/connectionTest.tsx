@@ -2,11 +2,12 @@
 
 import {toast} from "sonner";
 import {Button} from "@/components/ui/button";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {testApiWorkService} from "@/services/tests";
 import {useIsLogged} from "@/hooks/useIsLogged";
 import {Env} from "@/lib/env";
 import {getStoreLastUsedTime, storeLastUsedTime} from "@/storage/localStorage/apiConnectionTest";
+
 
 
 interface IConnectionTest {
@@ -49,7 +50,6 @@ export const ConnectionTest = ({setLockActions, isSilent}: IConnectionTest) => {
         <div className={"flex gap-x-2 min-w-fit"}>
             <Button
                 onClick={handleCancel}
-                variant={"ghost"}
                 className={"text-sm border-2 border-red-600 hover:bg-red-700 text-slate-800 " +
                     "dark:border-2 dark:border-red-600 dark:hover:bg-red-700 dark:text-gray-50"}
             >Cancel</Button>
@@ -59,7 +59,7 @@ export const ConnectionTest = ({setLockActions, isSilent}: IConnectionTest) => {
 
     // LOGIC:
     useEffect(() => {
-        if (Env.isDev && isLogged) {
+        if (Env.isDev&& isLogged) {
             if (setLockActions)
                 setLockActions(false)
             return
@@ -79,8 +79,10 @@ export const ConnectionTest = ({setLockActions, isSilent}: IConnectionTest) => {
 
             const status = await handleTestAgain()
 
-            if (status == "success" || status == "already_started_recently")
+            if (status == "success" || status == "already_started_recently") {
+                setLockActions && setLockActions(false)
                 return
+            }
 
             // recursive
             await tryAgain()
@@ -88,7 +90,6 @@ export const ConnectionTest = ({setLockActions, isSilent}: IConnectionTest) => {
 
         return () => {
             toast.dismiss(toastIds.starting)
-            toast.dismiss(toastIds.cancelled)
         }
     }, [])
 
@@ -105,8 +106,6 @@ export const ConnectionTest = ({setLockActions, isSilent}: IConnectionTest) => {
             setLockActions && setLockActions(false)
             return "not_started"
         }
-
-
 
         const res = await testApiWorkService()
         if (res.isError)

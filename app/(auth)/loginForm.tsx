@@ -15,11 +15,10 @@ import {authService} from "@/services/authService";
 import {saveAccessToken} from "@/storage/cookies/auth";
 import {Env} from "@/lib/env";
 import {useLoginRedirect} from "@/app/(auth)/shared/useLoginRedirect";
+import {Loading} from "@/components/template/loading";
 
 export const LoginForm = () => {
     const [isLoading, startTransition] = useTransition()
-    const router = useRouter()
-    const searchParams = useSearchParams()
     const { redirectWhenAlreadyLogged, redirectAfterLogin,checkForAuthErrorAndShowMessage } = useLoginRedirect()
 
     useEffect(() => {
@@ -51,9 +50,11 @@ export const LoginForm = () => {
         })
     }
 
-    return (
+    return (<>
+        { isLoading && <Loading /> }
 
             <Form {...form}>
+
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7 w-full">
                     <FormInput form={form}
                                name={"email"}
@@ -78,7 +79,5 @@ export const LoginForm = () => {
                     </div>
                 </form>
             </Form>
-
-
-    )
+    </>)
 }

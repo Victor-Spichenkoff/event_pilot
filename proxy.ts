@@ -9,11 +9,8 @@ import {
     publicRoutes
 } from "@/routes"
 
-// export function middleware(request: NextRequest) {
-//     NextResponse.next()
-// }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl
     const isPublic = publicRoutes.includes(pathname)
     const isAuth = authRoutes.includes(pathname)

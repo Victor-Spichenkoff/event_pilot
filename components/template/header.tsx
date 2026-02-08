@@ -25,7 +25,7 @@ export const Header = ({
                         <Image src={Logo} alt="Logo"  width={40} height={40}/>
                     </div>
                 )}
-                {/* Botão menu lateral */}
+
                 {!hideMenu && (
                     <div className="absolute left-4">
                         <button

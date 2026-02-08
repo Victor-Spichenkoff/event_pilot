@@ -19,7 +19,10 @@ import {Loading} from "@/components/template/loading";
 
 export const LoginForm = () => {
     const [isLoading, startTransition] = useTransition()
-    const { redirectWhenAlreadyLogged, redirectAfterLogin,checkForAuthErrorAndShowMessage } = useLoginRedirect()
+    const {
+        redirectWhenAlreadyLogged,
+        makeLoginAndShowMessages,
+        checkForAuthErrorAndShowMessage } = useLoginRedirect()
 
     useEffect(() => {
         redirectWhenAlreadyLogged().then()
@@ -37,16 +40,7 @@ export const LoginForm = () => {
 
     const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
         startTransition(async () =>{
-            const result = await authService.login(data.email, data.password)
-            if(result.isError) {
-                toast.error(result.errorMessage)
-                return
-            }
-
-            await saveAccessToken(result.response.token, result.response.expiresAt)
-
-            redirectAfterLogin()
-            toast.success("Login successfully")
+            await makeLoginAndShowMessages(data.email, data.password)
         })
     }
 

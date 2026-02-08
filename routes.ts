@@ -13,7 +13,7 @@ export const protectedRoutes = [
 
 export const authRoutes = [
     "/login",
-    "/signup",
+    "/register",
     "/auto-login"
 ]
 

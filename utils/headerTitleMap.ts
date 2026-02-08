@@ -1,6 +1,6 @@
 export const AUTH_HEADER_TITLES = {
     '/login': 'Login',
-    '/signup': 'Register'
+    '/register': 'Register'
 }
 
 

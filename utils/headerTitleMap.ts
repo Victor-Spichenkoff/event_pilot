@@ -1,6 +1,7 @@
 export const AUTH_HEADER_TITLES = {
     '/login': 'Login',
-    '/register': 'Register'
+    '/register': 'Register',
+    '/auto-login': 'Auto Login'
 }
 
 

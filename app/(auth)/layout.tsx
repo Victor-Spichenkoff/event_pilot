@@ -7,7 +7,7 @@ import {AUTH_HEADER_TITLES} from "@/utils/headerTitleMap";
 import {Footer} from "@/components/template/footer";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
-    const pathname = usePathname() as "/login" | "/signup"
+    const pathname = usePathname() as "/login" | "/register" | "/auto-login"
     const title = AUTH_HEADER_TITLES[pathname] ?? ''
 
     return (
